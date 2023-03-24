@@ -46,7 +46,6 @@ const ResetCSS = createGlobalStyle`
   select {
     font: inherit;
     cursor: pointer;
-    border: none;
     outline: none;
   }
 `;
