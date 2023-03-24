@@ -21,6 +21,8 @@ const ResetCSS = createGlobalStyle`
   ol,
   li {
     margin: 0;
+    padding: 0;
+    list-style-type: none;
   }
 
   body {

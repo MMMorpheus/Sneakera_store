@@ -80,7 +80,6 @@ const StyledHeader = styled.header`
     ${alignCenter};
     gap: 30px;
     & li {
-      list-style-type: none;
       cursor: pointer;
     }
     & li svg {

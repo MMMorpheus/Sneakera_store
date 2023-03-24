@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from '@/Components';
+import { Header, Slider, ProductCard, ProductsList } from '@/Components';
 import styled from 'styled-components';
 
 
@@ -8,13 +8,15 @@ const App = () => {
   return (
     <StyledWrapper>
       <Header />
+      <Slider />
+      <ProductsList />
     </StyledWrapper>
   );
 }
 
 const StyledWrapper = styled.main`
   width: 1080px;
-  height: 500px;
+  height: 100%;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 20px;
