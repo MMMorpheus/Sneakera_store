@@ -26,7 +26,7 @@ const ResetCSS = createGlobalStyle`
   }
 
   body {
-    min-height: 100vh;
+    min-height: 100%;
     padding-top: 85px;
     background-color: #e7f6ff;
     scroll-behavior: smooth;

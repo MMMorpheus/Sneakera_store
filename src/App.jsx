@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Slider, ProductCard, ProductsList } from '@/Components';
+import { Header, Slider, ProductsList, ShopCart } from '@/Components';
 import styled from 'styled-components';
 
 
@@ -8,8 +8,9 @@ const App = () => {
   return (
     <StyledWrapper>
       <Header />
-      <Slider />
+      {/* <Slider /> */}
       <ProductsList />
+      <ShopCart />
     </StyledWrapper>
   );
 }

@@ -15,6 +15,12 @@ export const Card = styled.li`
   ${justifyBetween};
   flex-direction: column;
   position: relative;
+  transition: scale .5s ease, box-shadow .5s ease;
+  cursor: pointer;
+  &:hover {
+    scale: 1.1;
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+  }
   & > button {
     ${cardActionBtn};
     position: absolute;
@@ -24,13 +30,13 @@ export const Card = styled.li`
       width: 18px;
       height: 18px;
       color: #bdbdbd;
-      transition: all 0.5s ease
+      transition: all 0.5s ease;
     }
   }
   & > button:hover > svg {
     color: red;
     scale: 1.1;
-    }
+  }
 
   & > div:first-child {
     height: 112px;
@@ -62,7 +68,7 @@ export const Card = styled.li`
     width: 14px;
     height: 14px;
     color: #d3d3d3;
-    transition: all 0.5s ease;
+    transition: color 0.5s ease, scale 0.5s ease;
   }
   & > div:last-child > button:hover > svg {
     color: black;

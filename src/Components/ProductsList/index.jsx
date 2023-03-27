@@ -1,11 +1,12 @@
 import React from "react";
 import { ProductCard } from "@/Components";
+
 import styled from "styled-components";
 import { blockWidth, justifyBetween } from "@/styles";
 
 import { items } from "@/items";
 
-const ProductsList = ({ children }) => {
+const ProductsList = () => {
   return (
     <List>
       <div>
@@ -36,7 +37,6 @@ const ProductsList = ({ children }) => {
 const List = styled.section`
   ${blockWidth}
   height: 600px;
-  /* border: 1px solid black; */
   & > div {
     ${justifyBetween}
     margin-bottom: 40px;
