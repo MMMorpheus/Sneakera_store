@@ -36,7 +36,7 @@ const ProductsList = () => {
 
 const List = styled.section`
   ${blockWidth}
-  height: 600px;
+  flex: 1;
   & > div {
     ${justifyBetween}
     margin-bottom: 40px;

@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { justifyBetween, priceTypography, greenBtn } from "@/styles";
 
 export const Overlay = styled.section`
   width: 100%;
@@ -19,11 +20,44 @@ export const Cart = styled.aside`
   top: 0;
   right: 0;
   z-index: 2;
-
+  ${justifyBetween};
+  flex-direction: column;
   & > h2 {
     font-size: 24px;
     font-weight: 700;
     line-height: 29px;
     margin-bottom: 30px;
+  }
+  & > div {
+    margin-top: auto;
+  }
+  & > div > button {
+    ${greenBtn}
+    position: relative;
+  }
+  & > div > button > svg {
+    position: absolute;
+    right: 29px;
+    top: 21px;
+  }
+`;
+
+export const Line = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 19px;
+  & span {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+  }
+  & > div {
+    flex: 1;
+    margin-inline: 8px;
+    height: 13px;
+    border-bottom: 2px dotted #dfdfdf;
+  }
+  & p {
+    ${priceTypography}
   }
 `;

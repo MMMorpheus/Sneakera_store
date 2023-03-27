@@ -40,3 +40,16 @@ export const cardActionBtn = css`
   justify-content: center;
   align-items: center;
 `;
+
+export const greenBtn = css`
+  height: 55px;
+  width: 325px;
+  border: none;
+  border-radius: 18px;
+  color: #fff;
+  background-color: #9dd458;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  text-align: center;
+`;
