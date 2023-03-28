@@ -27,7 +27,18 @@ const ProductsList = () => {
       </div>
       <ul>
         {items.map((item) => {
-          return <ProductCard key={item.id} product={item} />;
+          return (
+            <ProductCard
+              key={item.id}
+              product={item}
+              onClickAddToCart={() => {
+                console.log("Додали у кошик");
+              }}
+              onClickAddToFavourites={() => {
+                console.log("Додали у обране");
+              }}
+            />
+          );
         })}
       </ul>
     </List>
@@ -37,6 +48,7 @@ const ProductsList = () => {
 const List = styled.section`
   ${blockWidth}
   flex: 1;
+  margin-top: auto;
   & > div {
     ${justifyBetween}
     margin-bottom: 40px;
@@ -62,13 +74,15 @@ const List = styled.section`
     line-height: 17px;
     color: #d4d4d4;
   }
-  & > div  div {
+  & > div div {
     position: absolute;
     top: 30%;
     left: 17px;
   }
   & > ul {
-    ${justifyBetween};
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
   }
 `;
 

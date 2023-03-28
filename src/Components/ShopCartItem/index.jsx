@@ -1,11 +1,11 @@
 import React from "react";
 import { CartItem } from "./style";
 
-const ShopCartItem = ({item: {img, model, price}}) => {
+const ShopCartItem = ({item: {imgUrl, model, price}}) => {
   return (
     <CartItem>
       <div>
-        <img src={img} alt={model} />
+        <img src={imgUrl} alt={model} />
       </div>
       <div>
         <p>{model}</p>

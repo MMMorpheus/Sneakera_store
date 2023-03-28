@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   justifyBetween,
   priceTypography,
@@ -15,7 +15,7 @@ export const Card = styled.li`
   ${justifyBetween};
   flex-direction: column;
   position: relative;
-  transition: scale .5s ease, box-shadow .5s ease;
+  transition: scale 0.5s ease, box-shadow 0.5s ease;
   cursor: pointer;
   &:hover {
     scale: 1.1;
@@ -63,6 +63,11 @@ export const Card = styled.li`
   }
   & > div:last-child > button {
     ${cardActionBtn};
+    ${(props) =>
+      props.$isAdded ||
+      css`
+        background: linear-gradient(180deg, #89f09c 0%, #3cc755 100%);
+      `}
   }
   & > div:last-child > button > svg {
     width: 14px;

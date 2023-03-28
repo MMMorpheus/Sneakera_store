@@ -10,7 +10,7 @@ const App = () => {
       <Header />
       {/* <Slider /> */}
       <ProductsList />
-      <ShopCart />
+      {/* <ShopCart /> */}
     </StyledWrapper>
   );
 }
@@ -22,6 +22,8 @@ const StyledWrapper = styled.main`
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
 `
 
 export default App;
