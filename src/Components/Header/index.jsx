@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { alignCenter } from "@/styles";
-import logo from "@/assets/img/logo.png";
+import logo from "@/assets/logo.png";
 
-const Header = ({totalPrice = 1000}) => {
+const Header = ({totalPrice = 1000, cartOpen}) => {
   return (
     <StyledHeader>
       <div>
@@ -15,7 +15,7 @@ const Header = ({totalPrice = 1000}) => {
       </div>
 
       <ul>
-        <li>
+        <li onClick={cartOpen}>
           <svg
             fill="none"
             stroke="currentColor"

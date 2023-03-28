@@ -4,9 +4,7 @@ import { ProductCard } from "@/Components";
 import styled from "styled-components";
 import { blockWidth, justifyBetween } from "@/styles";
 
-import { items } from "@/items";
-
-const ProductsList = () => {
+const ProductsList = ({items}) => {
   return (
     <List>
       <div>
@@ -26,7 +24,7 @@ const ProductsList = () => {
         </label>
       </div>
       <ul>
-        {items.map((item) => {
+        {items?.map((item) => {
           return (
             <ProductCard
               key={item.id}

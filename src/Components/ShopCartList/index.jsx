@@ -3,12 +3,11 @@ import { ShopCartItem } from "@/Components";
 
 import styled from 'styled-components';
 
-import { items } from "@/items";
 
-const ShopCartList = ({}) => {
+const ShopCartList = ({items}) => {
   return (
     <ShopList>
-      {items.map((product) => {
+      {items?.map((product) => {
         return <ShopCartItem key={product.id} item={product} />;
       })}
     </ShopList>
