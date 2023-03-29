@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card } from "./style";
 
 const ProductCard = ({
-  product: { imgUrl, model, price },
+  product: { imgUrl, model, price, id },
   onClickAddToCart,
   onClickAddToFavourites,
 }) => {
@@ -29,6 +29,7 @@ const ProductCard = ({
           <p>{price} грн.</p>
         </div>
         <button onClick={() => {
+          onClickAddToCart({imgUrl, model, price, id});
           setIsAdded(true);
         }}>
           {!isAdded ? (

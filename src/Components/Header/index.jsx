@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { alignCenter } from "@/styles";
 import logo from "@/assets/logo.png";
 
-const Header = ({totalPrice = 1000, cartOpen}) => {
+const Header = ({total = 0, cartOpen}) => {
   return (
     <StyledHeader>
       <div>
@@ -28,7 +28,7 @@ const Header = ({totalPrice = 1000, cartOpen}) => {
             <circle cx="20" cy="21" r="1" />
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
           </svg>
-          <span>{totalPrice} грн.</span>
+          <span>{total} грн.</span>
         </li>
         <li>
           <svg viewBox="0 0 22 19" fill="currentColor">

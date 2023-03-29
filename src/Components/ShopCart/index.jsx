@@ -3,7 +3,9 @@ import * as C from "./style";
 
 import { ShopCartList } from "@/Components";
 
-const ShopCart = ({ items, cartClose }) => {
+const ShopCart = ({ items, cartClose, removeCartBtn, total }) => {
+  
+
   return (
     <C.Overlay>
       <C.Cart>
@@ -21,17 +23,17 @@ const ShopCart = ({ items, cartClose }) => {
             </svg>
           </button>
         </div>
-        <ShopCartList list={items} />
+        <ShopCartList list={items} remove={removeCartBtn}/>
         <div>
           <C.Line>
             <span>Загалом:</span>
             <div></div>
-            <p>1250 грн.</p>
+            <p>{total}грн.</p>
           </C.Line>
           <C.Line>
             <span>ПДВ 20%:</span>
             <div></div>
-            <p>250 грн.</p>
+            <p>{total*0.2} грн.</p>
           </C.Line>
           <button>
             Оформити замовлення

@@ -24,6 +24,7 @@ export const Cart = styled.aside`
   z-index: 2;
   ${justifyBetween};
   flex-direction: column;
+  
   & > div:first-child {
     ${justifyBetween};
   }

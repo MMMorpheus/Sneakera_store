@@ -4,13 +4,13 @@ import { ProductCard } from "@/Components";
 import styled from "styled-components";
 import { blockWidth, justifyBetween } from "@/styles";
 
-const ProductsList = ({items}) => {
+const ProductsList = ({items, addCartBtn, addFavouritesBtn, searchValue, handleInput}) => {
   return (
     <List>
       <div>
-        <h1>Усі кросівки</h1>
+        <h1>{searchValue ? `Пошук за запитом: "${searchValue}"` : "Усі кросівки"}</h1>
         <label>
-          <input type="text" placeholder="Пошук.." />
+          <input type="text" placeholder="Пошук.." value={searchValue} onChange={handleInput}/>
           <div>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path
@@ -24,17 +24,13 @@ const ProductsList = ({items}) => {
         </label>
       </div>
       <ul>
-        {items?.map((item) => {
+        {items?.filter(item => item.model.toLowerCase().includes(searchValue.toLowerCase())).map((item) => {
           return (
             <ProductCard
               key={item.id}
               product={item}
-              onClickAddToCart={() => {
-                console.log("Додали у кошик");
-              }}
-              onClickAddToFavourites={() => {
-                console.log("Додали у обране");
-              }}
+              onClickAddToCart={addCartBtn}
+              onClickAddToFavourites={addFavouritesBtn}
             />
           );
         })}

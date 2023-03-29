@@ -1,7 +1,7 @@
 import React from "react";
 import { CartItem } from "./style";
 
-const ShopCartItem = ({item: {imgUrl, model, price}}) => {
+const ShopCartItem = ({item: {imgUrl, model, price, id}, onRemove}) => {
   return (
     <CartItem>
       <div>
@@ -11,7 +11,9 @@ const ShopCartItem = ({item: {imgUrl, model, price}}) => {
         <p>{model}</p>
         <p>{price} грн.</p>
       </div>
-      <button>
+      <button onClick={() => {
+        onRemove(id)
+      }}>
         <svg
           width="10"
           height="10"
