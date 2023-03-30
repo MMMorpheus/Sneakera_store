@@ -1,7 +1,11 @@
 import styled from "styled-components";
-import { justifyBetween, priceTypography, greenBtn, cardActionBtn } from "@/styles";
-
-
+import {
+  alignCenter,
+  justifyBetween,
+  priceTypography,
+  greenBtn,
+  cardActionBtn,
+} from "@/styles";
 
 export const Overlay = styled.section`
   width: 100%;
@@ -24,7 +28,7 @@ export const Cart = styled.aside`
   z-index: 2;
   ${justifyBetween};
   flex-direction: column;
-  
+
   & > div:first-child {
     ${justifyBetween};
   }
@@ -38,13 +42,13 @@ export const Cart = styled.aside`
     ${cardActionBtn};
   }
   & > div:first-child > button svg {
-    color: #B5B5B5;
+    color: #b5b5b5;
     transition: color 0.5s ease, scale 0.5s ease;
-}
-& > div:first-child > button:hover > svg {
+  }
+  & > div:first-child > button:hover > svg {
     color: black;
     scale: 1.1;
-}
+  }
   & > div:last-child {
     margin-top: auto;
   }
@@ -58,6 +62,14 @@ export const Cart = styled.aside`
     top: 21px;
   }
 `;
+
+export const ShopList  = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 50px;
+  overflow: auto;
+`
 
 export const Line = styled.div`
   display: flex;
@@ -77,4 +89,38 @@ export const Line = styled.div`
   & p {
     ${priceTypography}
   }
+`;
+
+export const Empty = styled.div`
+  ${alignCenter};
+  flex-direction: column;
+  flex: 1;
+  margin-top: 200px !important;
+  & > img {
+    margin-bottom: 21px;
+  }
+  & > h2 {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 27px;
+    margin-bottom: 10px;
+  }
+  & > p {
+    max-width: 285px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    opacity: 0.4;
+    margin-bottom: 40px;
+  }
+  & > button {
+    width: 245px !important;
+    position: relative;
+  }
+  & > button > svg {
+    position: absolute;
+    top: 21px;
+    left: 29px;
+}
 `;

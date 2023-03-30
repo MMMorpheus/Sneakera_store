@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import {Home, Favourites, Orders} from "@/Pages"
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { createGlobalStyle } from "styled-components";
 
@@ -50,9 +53,26 @@ const ResetCSS = createGlobalStyle`
   }
 `;
 
+const router = createBrowserRouter([
+  {
+    paht: "/home",
+    element: <App />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "/favourites",
+       element: <Favourites /> 
+      },
+      {
+        path: "/orders",
+        element: <Orders />,
+      },
+    ],
+  },
+]);
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <ResetCSS />
-    <App />
+    <RouterProvider router={router} />
   </>
 );

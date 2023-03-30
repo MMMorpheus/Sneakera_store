@@ -1,16 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ProductCard } from "@/Components";
 
 import styled from "styled-components";
 import { blockWidth, justifyBetween } from "@/styles";
 
-const ProductsList = ({items, addCartBtn, addFavouritesBtn, searchValue, handleInput}) => {
+import AppContext from "@/Context";
+import { setSearchValue } from "@/actions";
+
+const ProductsList = () => {
+  const {
+    state: { allProducts, searchValue },
+    dispach,
+  } = useContext(AppContext);
+
+  console.log(allProducts)
+
   return (
     <List>
       <div>
-        <h1>{searchValue ? `Пошук за запитом: "${searchValue}"` : "Усі кросівки"}</h1>
+        <h1>
+          {searchValue ? `Пошук за запитом: "${searchValue}"` : "Усі кросівки"}
+        </h1>
         <label>
-          <input type="text" placeholder="Пошук.." value={searchValue} onChange={handleInput}/>
+          <input
+            type="text"
+            placeholder="Пошук.."
+            value={searchValue}
+            onChange={(e) => {
+              dispach(setSearchValue(e.target.value));
+            }}
+          />
           <div>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path
@@ -24,16 +43,21 @@ const ProductsList = ({items, addCartBtn, addFavouritesBtn, searchValue, handleI
         </label>
       </div>
       <ul>
-        {items?.filter(item => item.model.toLowerCase().includes(searchValue.toLowerCase())).map((item) => {
-          return (
-            <ProductCard
-              key={item.id}
-              product={item}
-              onClickAddToCart={addCartBtn}
-              onClickAddToFavourites={addFavouritesBtn}
-            />
-          );
-        })}
+      {console.log(allProducts)}
+        {allProducts
+          // ?.filter((item) =>
+          //   item.model.toLowerCase().includes(searchValue.toLowerCase())
+          // )
+          .map((item) => {
+            return (
+              <ProductCard
+                key={item.id}
+                product={item}
+                // onClickAddToCart={addCartBtn}
+                // onClickAddToFavourites={addFavouritesBtn}
+              />
+            );
+          })}
       </ul>
     </List>
   );

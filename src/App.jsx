@@ -1,72 +1,67 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect, useReducer } from "react";
 import { useScrollLock } from "@/hooks/useScrollLock";
-import { Header, Slider, ProductsList, ShopCart } from "@/Components";
+import { Header, ShopCart } from "@/Components";
+
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3000/";
 import styled from "styled-components";
+import { Outlet } from "react-router-dom";
+
+import reducer from "./reducer";
+import * as actions from "./actions";
+import initialState from "./state";
+
+import AppContext from "@/Context";
 
 const App = () => {
   const { lockScroll, unlockScroll } = useScrollLock();
 
-  const [cartOpened, setCartOpened] = useState(false);
+  // const [cartOpened, setCartOpened] = useState(false);
 
-  const [products, setProducts] = useState([]);
-  const [cartProducts, setCartProducts] = useState([]);
+  const [state, dispach] = useReducer(reducer, initialState);
 
-  const [searchValue, setSearchValue] = useState('');
-  
-
-  const handleCart = () => {
-    cartOpened
-      ? (setCartOpened(false), unlockScroll())
-      : (setCartOpened(true), lockScroll());
-  };
+  // const handleCart = () => {
+  //   cartOpened
+  //     ? (setCartOpened(false), unlockScroll())
+  //     : (setCartOpened(true), lockScroll());
+  // };
 
   const addToCart = (item) => {
     setCartProducts((prev) => [...prev, item]);
     axios.post("https://6422bf7677e7062b3e219a4d.mockapi.io/api/v1/cart", item);
   };
 
-  const removeFromCart = (id) => {
-    setCartProducts(cartProducts.filter( item => item.id !== id ));
-    axios.delete(`https://6422bf7677e7062b3e219a4d.mockapi.io/api/v1/cart/${id}`)
-  };
+  // const removeFromCart = (id) => {
+  //   setCartProducts(cartProducts.filter((item) => item.id !== id));
+  //   axios.delete(
+  //     `https://6422bf7677e7062b3e219a4d.mockapi.io/api/v1/cart/${id}`
+  //   );
+  // };
 
   const addToFavourites = () => {
     console.log("Add to favourites");
   };
 
-  const handleSearch = (e) => {
-    setSearchValue(e.target.value);
-  }
-  
   useEffect(() => {
-    axios.get("https://6422bf7677e7062b3e219a4d.mockapi.io/api/v1/products")
-      .then((res) => setProducts(res.data));
-  }, []);
-  useEffect(() => {
-    axios.get("https://6422bf7677e7062b3e219a4d.mockapi.io/api/v1/cart")
-      .then((res) => setCartProducts(res.data));
+    async function getData() {
+      const cartProducts = await axios.get("/cart");
+      const favouriteProducts = await axios.get("/favourite");
+      const allProducts = await axios.get("/products");
+
+      dispach(actions.getCartProducts(cartProducts.data));
+      dispach(actions.getFavouriteProducts(favouriteProducts.data));
+      dispach(actions.getAllProducts(allProducts.data));
+    }
+    getData();
   }, []);
 
   return (
     <StyledWrapper>
-      <Header cartOpen={handleCart} total={0} />
-      <Slider />
-      <ProductsList
-        searchValue={searchValue}
-        handleInput={handleSearch}
-        items={products}
-        addCartBtn={addToCart}
-        addFavouritesBtn={addToFavourites}
-      />
-      {cartOpened && (
-        <ShopCart
-          items={cartProducts}
-          cartClose={handleCart}
-          removeCartBtn={removeFromCart}
-          total={0}
-        />
-      )}
+      <AppContext.Provider value={{ state, dispach }}>
+        <Header />
+        {state.isCartOpened && <ShopCart />}
+        <Outlet />
+      </AppContext.Provider>
     </StyledWrapper>
   );
 };
