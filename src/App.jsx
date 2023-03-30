@@ -51,8 +51,11 @@ const App = () => {
       dispach(actions.getCartProducts(cartProducts.data));
       dispach(actions.getFavouriteProducts(favouriteProducts.data));
       dispach(actions.getAllProducts(allProducts.data));
+      
+      console.log(state)
     }
     getData();
+    
   }, []);
 
   return (

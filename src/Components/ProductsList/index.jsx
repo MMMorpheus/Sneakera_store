@@ -44,10 +44,10 @@ const ProductsList = () => {
       </div>
       <ul>
       {console.log(allProducts)}
-        {allProducts
-          // ?.filter((item) =>
-          //   item.model.toLowerCase().includes(searchValue.toLowerCase())
-          // )
+        {allProducts && allProducts
+          ?.filter((item) =>
+            item.model.toLowerCase().includes(searchValue.toLowerCase())
+          )
           .map((item) => {
             return (
               <ProductCard

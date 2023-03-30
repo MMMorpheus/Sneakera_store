@@ -12,17 +12,17 @@ export default function reducer(state, { type, payload }) {
     case GET_ALL_PRODUCTS:
       return {
         ...state,
-        allProducts:  [...state.allProducts, payload],
+        allProducts:  [...state.allProducts, ...payload],
       };
     case GET_CART_PRODUCTS:
       return {
         ...state,
-        cartProducts: [...state.cartProducts, payload],
+        cartProducts: [...state.cartProducts, ...payload],
       };
     case GET_FAVOURITE_PRODUCTS:
       return {
         ...state,
-        favouriteProducts: [...state.favouriteProducts, payload],
+        favouriteProducts: [...state.favouriteProducts, ...payload],
       };
     case SET_SEARCH_VALUE:
       return {
