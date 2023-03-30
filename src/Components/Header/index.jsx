@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
-import { alignCenter } from "@/styles";
-import logo from "@/assets/logo.png";
-
-import { Link } from "react-router-dom";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 import AppContext from "@/Context";
 import { handleCart } from "@/actions";
+
+import { Link } from "react-router-dom";
+
+import styled from "styled-components";
+import { alignCenter } from "@/styles";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const {
@@ -14,6 +16,7 @@ const Header = () => {
     dispach,
   } = useContext(AppContext);
 
+  const {lockScroll} = useScrollLock();
   return (
     <StyledHeader>
       <div>
@@ -29,6 +32,7 @@ const Header = () => {
       <ul>
         <li
           onClick={() => {
+            lockScroll();
             dispach(handleCart(!isCartOpened));
           }}
         >

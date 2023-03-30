@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
-import * as C from "./style";
-import empty from "@/assets/empty_cart.png";
-
+import { useScrollLock } from "@/hooks/useScrollLock";
 import { ShopCartItem } from "@/Components";
 
 import AppContext from "@/Context";
@@ -9,24 +7,30 @@ import { handleCart, removeFromCart } from "@/actions";
 
 import axios from "axios";
 
+import * as C from "./style";
+import empty from "@/assets/empty_cart.png";
+
 const ShopCart = () => {
   const {
     state: { cartProducts, isCartOpened },
     dispach,
   } = useContext(AppContext);
 
+  const { unlockScroll } = useScrollLock();
+
   const clickToCloseCart = () => {
+    unlockScroll();
     dispach(handleCart(!isCartOpened));
   };
 
   const clickToRemoveFromCart = (id) => {
-    axios.delete(`cart/${id}`)
+    axios.delete(`cart/${id}`);
     dispach(removeFromCart(id));
-  }
+  };
 
-  const getTotalPrice = cartProducts.reduce((acum, cur) => {
-    acum + cur.price
-  }, 0)
+  // const getTotalPrice = cartProducts && cartProducts.reduce((acum, cur) => {
+  //   (acum + cur.price), 0
+  // })
 
   return (
     <C.Overlay>
@@ -45,7 +49,6 @@ const ShopCart = () => {
             </svg>
           </button>
         </div>
-        {console.log(cartProducts)}
         {!cartProducts.length ? (
           <C.Empty>
             <img width={120} height={120} src={empty} alt="Empty cart" />
@@ -86,7 +89,7 @@ const ShopCart = () => {
               {cartProducts.map((product) => {
                 return (
                   <ShopCartItem
-                    // key={product.id}
+                    key={product.id}
                     item={product}
                     onRemove={clickToRemoveFromCart}
                   />
@@ -97,12 +100,12 @@ const ShopCart = () => {
               <C.Line>
                 <span>Загалом:</span>
                 <div></div>
-                <p>{getTotalPrice}грн.</p>
+                <p>0 грн.</p>
               </C.Line>
               <C.Line>
                 <span>ПДВ 20%:</span>
                 <div></div>
-                <p>{getTotalPrice * 0.2} грн.</p>
+                <p>0 грн.</p>
               </C.Line>
               <button>
                 Оформити замовлення

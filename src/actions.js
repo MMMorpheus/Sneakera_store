@@ -4,7 +4,10 @@ import {
   GET_FAVOURITE_PRODUCTS,
   SET_SEARCH_VALUE,
   HANDLE_CART,
-  REMOVE_FROM_CART
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  ADD_TO_FAVOURITES,
+  REMOVE_FROM_FAVOURITES
 } from "@/boilerplate";
 
 export const getAllProducts = (payload) => {
@@ -41,9 +44,27 @@ export const handleCart = (payload) => {
     payload,
   };
 };
+export const addToCart = (payload) => {
+  return {
+    type: ADD_TO_CART,
+    payload,
+  };
+};
 export const removeFromCart = (payload) => {
   return {
     type: REMOVE_FROM_CART,
+    payload,
+  };
+};
+export const addToFavourites = (payload) => {
+  return {
+    type: ADD_TO_FAVOURITES,
+    payload,
+  };
+};
+export const removeFromFavourites = (payload) => {
+  return {
+    type: REMOVE_FROM_FAVOURITES,
     payload,
   };
 };

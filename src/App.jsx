@@ -1,46 +1,19 @@
-import React, { useState, useEffect, useReducer } from "react";
-import { useScrollLock } from "@/hooks/useScrollLock";
+import React, { useEffect, useReducer } from "react";
 import { Header, ShopCart } from "@/Components";
 
-import axios from "axios";
-axios.defaults.baseURL = "http://localhost:3000/";
-import styled from "styled-components";
-import { Outlet } from "react-router-dom";
-
+import AppContext from "@/Context";
 import reducer from "./reducer";
 import * as actions from "./actions";
 import initialState from "./state";
 
-import AppContext from "@/Context";
+import { Outlet } from "react-router-dom";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3000/";
+
+import styled from "styled-components";
 
 const App = () => {
-  const { lockScroll, unlockScroll } = useScrollLock();
-
-  // const [cartOpened, setCartOpened] = useState(false);
-
   const [state, dispach] = useReducer(reducer, initialState);
-
-  // const handleCart = () => {
-  //   cartOpened
-  //     ? (setCartOpened(false), unlockScroll())
-  //     : (setCartOpened(true), lockScroll());
-  // };
-
-  const addToCart = (item) => {
-    setCartProducts((prev) => [...prev, item]);
-    axios.post("https://6422bf7677e7062b3e219a4d.mockapi.io/api/v1/cart", item);
-  };
-
-  // const removeFromCart = (id) => {
-  //   setCartProducts(cartProducts.filter((item) => item.id !== id));
-  //   axios.delete(
-  //     `https://6422bf7677e7062b3e219a4d.mockapi.io/api/v1/cart/${id}`
-  //   );
-  // };
-
-  const addToFavourites = () => {
-    console.log("Add to favourites");
-  };
 
   useEffect(() => {
     async function getData() {
@@ -51,11 +24,8 @@ const App = () => {
       dispach(actions.getCartProducts(cartProducts.data));
       dispach(actions.getFavouriteProducts(favouriteProducts.data));
       dispach(actions.getAllProducts(allProducts.data));
-      
-      console.log(state)
     }
     getData();
-    
   }, []);
 
   return (

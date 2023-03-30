@@ -51,6 +51,10 @@ const ResetCSS = createGlobalStyle`
     cursor: pointer;
     outline: none;
   }
+  a {
+    text-decoration: none;
+  }
+
 `;
 
 const router = createBrowserRouter([

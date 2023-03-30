@@ -4,7 +4,10 @@ import {
   GET_FAVOURITE_PRODUCTS,
   SET_SEARCH_VALUE,
   HANDLE_CART,
-  REMOVE_FROM_CART
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  ADD_TO_FAVOURITES,
+  REMOVE_FROM_FAVOURITES,
 } from "@/boilerplate";
 
 export default function reducer(state, { type, payload }) {
@@ -34,10 +37,25 @@ export default function reducer(state, { type, payload }) {
         ...state,
         isCartOpened: payload,
       };
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cartProducts: [...state.cartProducts, payload],
+      };
     case REMOVE_FROM_CART:
       return {
         ...state,
         cartProducts: state.cartProducts.filter((item) => item.id !== payload),
+      };
+    case ADD_TO_FAVOURITES:
+      return {
+        ...state,
+        cartProducts: [...state.favouriteProducts, payload],
+      };
+    case REMOVE_FROM_FAVOURITES:
+      return {
+        ...state,
+        cartProducts: state.favouriteProducts.filter((item) => item.id !== payload),
       };
     default:
       return { ...state };

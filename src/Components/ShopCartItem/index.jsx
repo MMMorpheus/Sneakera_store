@@ -3,7 +3,7 @@ import { CartItem } from "./style";
 
 const ShopCartItem = ({item: {imgUrl, model, price, id}, onRemove}) => {
   return (
-    <CartItem key={id}>
+    <CartItem>
       <div>
         <img src={imgUrl} alt={model} />
       </div>

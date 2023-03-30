@@ -10,4 +10,8 @@ export const SET_SEARCH_VALUE = "Set search value";
 export const HANDLE_CART = "Handle cart";
 
 // Products actions
+export const ADD_TO_CART = "Add to cart"
 export const REMOVE_FROM_CART = "Remove from cart"
+
+export const ADD_TO_FAVOURITES = "Add to favourites"
+export const REMOVE_FROM_FAVOURITES = "Remove from favourites"

@@ -1,19 +1,17 @@
 import React, { useContext } from "react";
 import { ProductCard } from "@/Components";
 
-import styled from "styled-components";
-import { blockWidth, justifyBetween } from "@/styles";
-
 import AppContext from "@/Context";
-import { setSearchValue } from "@/actions";
+import { setSearchValue} from "@/actions";
+
+import styled from "styled-components";
+import { blockWidth, justifyBetween, listPositioning } from "@/styles";
 
 const ProductsList = () => {
   const {
     state: { allProducts, searchValue },
     dispach,
   } = useContext(AppContext);
-
-  console.log(allProducts)
 
   return (
     <List>
@@ -43,21 +41,19 @@ const ProductsList = () => {
         </label>
       </div>
       <ul>
-      {console.log(allProducts)}
-        {allProducts && allProducts
-          ?.filter((item) =>
-            item.model.toLowerCase().includes(searchValue.toLowerCase())
-          )
-          .map((item) => {
-            return (
-              <ProductCard
-                key={item.id}
-                product={item}
-                // onClickAddToCart={addCartBtn}
-                // onClickAddToFavourites={addFavouritesBtn}
-              />
-            );
-          })}
+        {allProducts &&
+          allProducts
+            .filter((item) =>
+              item.model.toLowerCase().includes(searchValue.toLowerCase())
+            )
+            .map((item) => {
+              return (
+                <ProductCard
+                  key={item.id}
+                  product={item}
+                />
+              );
+            })}
       </ul>
     </List>
   );
@@ -98,9 +94,7 @@ const List = styled.section`
     left: 17px;
   }
   & > ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    ${listPositioning};
   }
 `;
 
