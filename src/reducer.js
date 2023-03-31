@@ -4,6 +4,7 @@ import {
   GET_FAVOURITE_PRODUCTS,
   SET_SEARCH_VALUE,
   HANDLE_CART,
+  ITEAMS_LOADED,
   ADD_TO_CART,
   REMOVE_FROM_CART,
   ADD_TO_FAVOURITES,
@@ -36,6 +37,11 @@ export default function reducer(state, { type, payload }) {
       return {
         ...state,
         isCartOpened: payload,
+      };
+    case ITEAMS_LOADED:
+      return {
+        ...state,
+        isLoading: payload,
       };
     case ADD_TO_CART:
       return {

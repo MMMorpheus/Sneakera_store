@@ -8,7 +8,7 @@ const ProductCard = ({
   added,
   favourited,
 }) => {
-  const { handleCartItem, handleFavouriteItem} = useCardActions();
+  const { handleCartItem, handleFavouriteItem } = useCardActions();
 
   return (
     <Card $isAdded={!added} $isFavourited={!favourited}>

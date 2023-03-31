@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { blockWidth } from "@/styles";
-
 
 const Slider = () => {
     return (
@@ -12,8 +10,7 @@ const Slider = () => {
 }
 
 const StyledSlider = styled.section`
-    ${blockWidth};
-    
+    margin: 45px auto;
     height: 300px;
     border: 1px solid black;
 `

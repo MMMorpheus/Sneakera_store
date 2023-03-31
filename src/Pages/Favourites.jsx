@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductCard } from "@/Components";
+import { ProductsList } from "@/Components";
 
 import AppContext from "@/Context";
 
@@ -10,25 +10,13 @@ import sad from "@/assets/sadly.png";
 
 const Favourites = () => {
   const {
-    state: { cartProducts, favouriteProducts},
+    state: { favouriteProducts },
   } = useContext(AppContext);
 
   return favouriteProducts.length ? (
     <Page>
       <h2>Товари, додані у обране</h2>
-      <ul>
-        {favouriteProducts &&
-          favouriteProducts.map((item) => {
-            return (
-              <ProductCard
-                key={item.id}
-                product={item}
-                added={cartProducts.some(cartObj => cartObj.id === item.id)}
-                favourited={favouriteProducts.some(favObj => favObj.id === item.id)}
-              />
-            );
-          })}
-      </ul>
+      <ProductsList requiredItems={favouriteProducts} />
     </Page>
   ) : (
     <EmptyPage>

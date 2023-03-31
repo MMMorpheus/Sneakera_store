@@ -4,6 +4,7 @@ import {
   GET_FAVOURITE_PRODUCTS,
   SET_SEARCH_VALUE,
   HANDLE_CART,
+  ITEAMS_LOADED,
   ADD_TO_CART,
   REMOVE_FROM_CART,
   ADD_TO_FAVOURITES,
@@ -44,6 +45,14 @@ export const handleCart = (payload) => {
     payload,
   };
 };
+
+export const loading = (payload) => {
+  return {
+    type: ITEAMS_LOADED,
+    payload,
+  };
+};
+
 export const addToCart = (payload) => {
   return {
     type: ADD_TO_CART,

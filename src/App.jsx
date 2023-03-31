@@ -17,9 +17,13 @@ const App = () => {
 
   useEffect(() => {
     async function getData() {
+      dispach(actions.loading(true));
+
       const cartProducts = await axios.get("/cart");
       const favouriteProducts = await axios.get("/favourite");
       const allProducts = await axios.get("/products");
+
+      dispach(actions.loading(false));
 
       dispach(actions.getCartProducts(cartProducts.data));
       dispach(actions.getFavouriteProducts(favouriteProducts.data));

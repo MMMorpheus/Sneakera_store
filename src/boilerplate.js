@@ -8,6 +8,7 @@ export const SET_SEARCH_VALUE = "Set search value";
 
 // Boolean flags
 export const HANDLE_CART = "Handle cart";
+export const ITEAMS_LOADED = "Items loaded";
 
 // Products actions
 export const ADD_TO_CART = "Add to cart"

@@ -5,4 +5,5 @@ export default {
   ordersProduct: [],
   searchValue: "",
   isCartOpened: false,
+  isLoading: true
 };
