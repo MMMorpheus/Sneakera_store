@@ -50,12 +50,12 @@ export default function reducer(state, { type, payload }) {
     case ADD_TO_FAVOURITES:
       return {
         ...state,
-        cartProducts: [...state.favouriteProducts, payload],
+        favouriteProducts: [...state.favouriteProducts, payload],
       };
     case REMOVE_FROM_FAVOURITES:
       return {
         ...state,
-        cartProducts: state.favouriteProducts.filter((item) => item.id !== payload),
+        favouriteProducts: state.favouriteProducts.filter((item) => item.id !== payload),
       };
     default:
       return { ...state };

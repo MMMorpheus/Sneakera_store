@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import { useCardActions } from "@/hooks/useCardActions";
+
 import { ShopCartItem } from "@/Components";
 
 import AppContext from "@/Context";
 import { handleCart, removeFromCart } from "@/actions";
 
-import axios from "axios";
+// import axios from "axios";
 
 import * as C from "./style";
 import empty from "@/assets/empty_cart.png";
@@ -16,6 +18,8 @@ const ShopCart = () => {
     dispach,
   } = useContext(AppContext);
 
+  const { handleCartItem } = useCardActions();
+
   const { unlockScroll } = useScrollLock();
 
   const clickToCloseCart = () => {
@@ -23,10 +27,10 @@ const ShopCart = () => {
     dispach(handleCart(!isCartOpened));
   };
 
-  const clickToRemoveFromCart = (id) => {
-    axios.delete(`cart/${id}`);
-    dispach(removeFromCart(id));
-  };
+  // const clickToRemoveFromCart = (id) => {
+  //   axios.delete(`cart/${id}`);
+  //   dispach(removeFromCart(id));
+  // };
 
   // const getTotalPrice = cartProducts && cartProducts.reduce((acum, cur) => {
   //   (acum + cur.price), 0
@@ -91,7 +95,7 @@ const ShopCart = () => {
                   <ShopCartItem
                     key={product.id}
                     item={product}
-                    onRemove={clickToRemoveFromCart}
+                    onRemove={handleCartItem}
                   />
                 );
               })}

@@ -9,7 +9,7 @@ import { blockWidth, justifyBetween, listPositioning } from "@/styles";
 
 const ProductsList = () => {
   const {
-    state: { allProducts, searchValue },
+    state: { allProducts, cartProducts, favouriteProducts, searchValue },
     dispach,
   } = useContext(AppContext);
 
@@ -51,6 +51,8 @@ const ProductsList = () => {
                 <ProductCard
                   key={item.id}
                   product={item}
+                  added={cartProducts.some(cartObj => cartObj.id === item.id)}
+                  favourited={favouriteProducts.some(favObj => favObj.id === item.id)}
                 />
               );
             })}

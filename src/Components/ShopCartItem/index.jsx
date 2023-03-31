@@ -12,7 +12,7 @@ const ShopCartItem = ({item: {imgUrl, model, price, id}, onRemove}) => {
         <p>{price} грн.</p>
       </div>
       <button onClick={() => {
-        onRemove(id)
+        onRemove({imgUrl, model, price, id})
       }}>
         <svg
           width="10"

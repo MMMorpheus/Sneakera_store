@@ -19,14 +19,7 @@ const Orders = () => {
       <ul>
         {ordersProduct &&
           ordersProduct.map((item) => {
-            return (
-              <ProductCard
-                key={item.id}
-                product={item}
-                addToCart={clickToAddToCart}
-                addToFavourites={clickToAddToFavourites}
-              />
-            );
+            return <ProductCard key={item.id} product={item} />;
           })}
       </ul>
     </Page>
@@ -37,29 +30,30 @@ const Orders = () => {
       <p>Зробіть хоча б одне замовлення, щоб побачити його тут!</p>
 
       <Link to={"/"}>
-        <div>Повернутись назад
-        <svg
-                width="16"
-                height="14"
-                viewBox="0 0 16 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M14.7144 7L1.00007 7"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M7 13L1 7L7 1"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+        <div>
+          Повернутись назад
+          <svg
+            width="16"
+            height="14"
+            viewBox="0 0 16 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M14.7144 7L1.00007 7"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M7 13L1 7L7 1"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </div>
       </Link>
     </EmptyPage>

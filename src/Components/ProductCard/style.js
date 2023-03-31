@@ -32,6 +32,14 @@ export const Card = styled.li`
       color: #bdbdbd;
       transition: all 0.5s ease;
     }
+    ${(props) =>
+      props.$isFavourited ||
+      css`
+        background-color: #fef0f0;
+        & > svg {
+          color: #FF8585
+        }
+      `}
   }
   & > button:hover > svg {
     color: red;

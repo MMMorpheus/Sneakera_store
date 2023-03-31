@@ -10,7 +10,7 @@ import sad from "@/assets/sadly.png";
 
 const Favourites = () => {
   const {
-    state: { favouriteProducts },
+    state: { cartProducts, favouriteProducts},
   } = useContext(AppContext);
 
   return favouriteProducts.length ? (
@@ -23,8 +23,8 @@ const Favourites = () => {
               <ProductCard
                 key={item.id}
                 product={item}
-                addToCart={clickToAddToCart}
-                addToFavourites={clickToAddToFavourites}
+                added={cartProducts.some(cartObj => cartObj.id === item.id)}
+                favourited={favouriteProducts.some(favObj => favObj.id === item.id)}
               />
             );
           })}

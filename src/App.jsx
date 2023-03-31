@@ -25,7 +25,12 @@ const App = () => {
       dispach(actions.getFavouriteProducts(favouriteProducts.data));
       dispach(actions.getAllProducts(allProducts.data));
     }
-    getData();
+
+    try {
+      getData();
+    } catch (e) {
+      alert(e);
+    }
   }, []);
 
   return (
