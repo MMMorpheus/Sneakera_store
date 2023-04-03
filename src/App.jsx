@@ -22,12 +22,14 @@ const App = () => {
       const cartProducts = await axios.get("/cart");
       const favouriteProducts = await axios.get("/favourite");
       const allProducts = await axios.get("/products");
+      const allOrders = await axios.get("/orders");
 
       dispach(actions.loading(false));
 
       dispach(actions.getCartProducts(cartProducts.data));
       dispach(actions.getFavouriteProducts(favouriteProducts.data));
       dispach(actions.getAllProducts(allProducts.data));
+      dispach(actions.getOrdersProducts(allOrders.data));
     }
 
     try {

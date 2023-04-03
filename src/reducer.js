@@ -2,6 +2,7 @@ import {
   GET_ALL_PRODUCTS,
   GET_CART_PRODUCTS,
   GET_FAVOURITE_PRODUCTS,
+  GET_ORDERS,
   SET_SEARCH_VALUE,
   HANDLE_CART,
   ITEAMS_LOADED,
@@ -29,6 +30,11 @@ export default function reducer(state, { type, payload }) {
       return {
         ...state,
         favouriteProducts: [...state.favouriteProducts, ...payload],
+      };
+    case GET_ORDERS:
+      return {
+        ...state,
+        ordersProducts: [...state.ordersProducts, ...payload],
       };
     case SET_SEARCH_VALUE:
       return {
@@ -75,7 +81,7 @@ export default function reducer(state, { type, payload }) {
     case MAKE_AN_ORDER:
       return {
         ...state,
-        ordersProduct: [...state.ordersProduct, payload],
+        ordersProducts: [...state.ordersProducts, payload],
       };
     default:
       return { ...state };

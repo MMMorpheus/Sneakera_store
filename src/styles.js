@@ -81,6 +81,35 @@ export const Page = styled.section`
   }
 `;
 
+export const OrdersList = styled.div`
+  border-bottom: 2px solid black;
+  margin-bottom: 30px;
+  & * {
+    margin-bottom: 10px;
+  }
+  & > ul {
+    display: flex;
+    gap: 20px;
+  }
+  & > ul > li {
+    width: 210px;
+    height: 200px;
+    padding: 20px 25px 25px 33px;
+    border: 1px solid #f3f3f3;
+    border-radius: 40px;
+    ${justifyBetween};
+    flex-direction: column;
+  }
+  & img {
+    height: 112px;
+    width: 133px;
+    align-self: center;
+  }
+  & > ul p {
+    ${modelNamingTypograhy}
+  }
+`;
+
 export const EmptyPage = styled.section`
   min-height: 600px;
   ${flexnCenter};

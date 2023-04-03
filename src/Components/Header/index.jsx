@@ -1,8 +1,5 @@
 import React, { useContext } from "react";
-import { useScrollLock } from "@/hooks";
-
-import AppContext from "@/Context";
-import { handleCart } from "@/actions";
+import {useCart} from "@/hooks"
 
 import { Link } from "react-router-dom";
 
@@ -11,12 +8,9 @@ import { alignCenter } from "@/styles";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
-  const {
-    state: { isCartOpened },
-    dispach,
-  } = useContext(AppContext);
 
-  const {lockScroll} = useScrollLock();
+  const {handleCartView, total} = useCart();
+
   return (
     <StyledHeader>
       <div>
@@ -31,10 +25,7 @@ const Header = () => {
 
       <ul>
         <li
-          onClick={() => {
-            lockScroll();
-            dispach(handleCart(!isCartOpened));
-          }}
+          onClick={handleCartView}
         >
           <svg
             fill="none"
@@ -48,7 +39,7 @@ const Header = () => {
             <circle cx="20" cy="21" r="1" />
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
           </svg>
-          <span>0 грн.</span>
+          <span>{total} грн.</span>
         </li>
         <li>
           <Link to={"/favourites"}>

@@ -15,40 +15,47 @@ const useCart = () => {
   const [orderID, setOrderID] = useState(0);
   const [isOrdered, setIsordered] = useState(false);
 
-  const { unlockScroll } = useScrollLock();
+  const { lockScroll, unlockScroll } = useScrollLock();
 
-  // const getTotalPrice = cartProducts && cartProducts.reduce((acum, cur) => {
-  //   (acum + cur.price), 0
-  // })
+  const total = cartProducts.length
+    ? cartProducts.reduce((acum, cur) => acum + cur.price, 0)
+    : 0;
 
-  const onCloseCart = () => {
-    unlockScroll();
-    dispach(handleCart(!isCartOpened));
+  const handleCartView = () => {
+    if (isCartOpened) {
+      unlockScroll();
+      dispach(handleCart(!isCartOpened));
+    } else {
+      lockScroll();
+      dispach(handleCart(!isCartOpened));
+    }
   };
 
-  const createOrder = async () => {
-    setOrderID(prev => prev + 1);
-    const order = {
+  const createOrder = () => {
+    setOrderID((prev) => prev + 1);
+    return {
       id: orderID,
       createdAt: new Date(),
       products: [...cartProducts],
     };
+  };
+
+  const makeOrder = async () => {
     try {
-      const {data} = await axios.post("/orders", order);
+      const { data } = await axios.post("/orders", createOrder());
       dispach(makeAnOrder(data));
       for (let i = 0; i < cartProducts.length; i++) {
         const product = cartProducts[i];
         await axios.delete(`/cart/${product.id}`);
       }
       dispach(clearCart([]));
-      setIsordered(true)
-      console.log(orderID)
+      setIsordered(true);
     } catch (error) {
       console.log(error);
     }
   };
-  
-  return { cartProducts, onCloseCart, createOrder, orderID, isOrdered };
+
+  return { cartProducts, handleCartView, makeOrder, isOrdered, total };
 };
 
 export default useCart;

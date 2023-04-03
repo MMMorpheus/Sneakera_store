@@ -2,6 +2,7 @@ import {
   GET_ALL_PRODUCTS,
   GET_CART_PRODUCTS,
   GET_FAVOURITE_PRODUCTS,
+  GET_ORDERS,
   SET_SEARCH_VALUE,
   HANDLE_CART,
   ITEAMS_LOADED,
@@ -30,6 +31,13 @@ export const getCartProducts = (payload) => {
 export const getFavouriteProducts = (payload) => {
   return {
     type: GET_FAVOURITE_PRODUCTS,
+    payload,
+  };
+};
+
+export const getOrdersProducts = (payload) => {
+  return {
+    type: GET_ORDERS,
     payload,
   };
 };

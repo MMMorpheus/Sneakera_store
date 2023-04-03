@@ -2,7 +2,7 @@ export default {
   allProducts: [],
   cartProducts: [],
   favouriteProducts: [],
-  ordersProduct: [],
+  ordersProducts: [],
   searchValue: "",
   isCartOpened: false,
   isLoading: true

@@ -106,7 +106,7 @@ export const Empty = styled.div`
     margin-bottom: 10px;
   }
   & > p {
-    max-width: 285px;
+    max-width: 300px;
     text-align: center;
     font-size: 16px;
     font-weight: 400;

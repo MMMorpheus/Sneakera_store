@@ -1,27 +1,37 @@
 import React, { useContext } from "react";
-import { ProductCard } from "@/Components";
 
 import AppContext from "@/Context";
 
 import { Link } from "react-router-dom";
 
-import { Page, EmptyPage } from "@/styles";
+import { Page, OrdersList, EmptyPage } from "@/styles";
 import sadly from "@/assets/sadly.png";
 
 const Orders = () => {
   const {
-    state: { ordersProduct },
+    state: { ordersProducts },
   } = useContext(AppContext);
 
-  return ordersProduct.length ? (
+  return ordersProducts.length ? (
     <Page>
-      <h2>Товари, додані у обране</h2>
-      <ul>
-        {ordersProduct &&
-          ordersProduct.map((item) => {
-            return <ProductCard key={item.id} product={item} />;
-          })}
-      </ul>
+      <h2>Придбані товари</h2>
+      {ordersProducts.map(order => {
+        return (
+          <OrdersList>
+            <p>Номер замовлення: {order.id}</p>
+            <p>Дата замовлення: {order.createdAt}</p>
+            <ul>
+              {order.products.map(product => {
+                return <li key={product.id}>
+                  <img src={product.imgUrl} />
+                  <p>{product.model}</p>
+                </li>
+              })}
+            </ul>
+            
+          </OrdersList>
+        )
+      })}
     </Page>
   ) : (
     <EmptyPage>

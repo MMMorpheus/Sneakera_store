@@ -2,6 +2,7 @@
 export const GET_ALL_PRODUCTS = "Get all products";
 export const GET_CART_PRODUCTS = "Get cart products";
 export const GET_FAVOURITE_PRODUCTS = "Get favourite products";
+export const GET_ORDERS = "Get orders products";
 
 // Input values
 export const SET_SEARCH_VALUE = "Set search value";
