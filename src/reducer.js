@@ -7,8 +7,10 @@ import {
   ITEAMS_LOADED,
   ADD_TO_CART,
   REMOVE_FROM_CART,
+  CLEAR_CART,
   ADD_TO_FAVOURITES,
   REMOVE_FROM_FAVOURITES,
+  MAKE_AN_ORDER,
 } from "@/boilerplate";
 
 export default function reducer(state, { type, payload }) {
@@ -16,7 +18,7 @@ export default function reducer(state, { type, payload }) {
     case GET_ALL_PRODUCTS:
       return {
         ...state,
-        allProducts:  [...state.allProducts, ...payload],
+        allProducts: [...state.allProducts, ...payload],
       };
     case GET_CART_PRODUCTS:
       return {
@@ -53,6 +55,11 @@ export default function reducer(state, { type, payload }) {
         ...state,
         cartProducts: state.cartProducts.filter((item) => item.id !== payload),
       };
+    case CLEAR_CART:
+      return {
+        ...state,
+        cartProducts: payload,
+      };
     case ADD_TO_FAVOURITES:
       return {
         ...state,
@@ -61,7 +68,14 @@ export default function reducer(state, { type, payload }) {
     case REMOVE_FROM_FAVOURITES:
       return {
         ...state,
-        favouriteProducts: state.favouriteProducts.filter((item) => item.id !== payload),
+        favouriteProducts: state.favouriteProducts.filter(
+          (item) => item.id !== payload
+        ),
+      };
+    case MAKE_AN_ORDER:
+      return {
+        ...state,
+        ordersProduct: [...state.ordersProduct, payload],
       };
     default:
       return { ...state };

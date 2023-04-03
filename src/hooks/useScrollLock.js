@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-export const useScrollLock = () => {
+const useScrollLock = () => {
   const scrollBarCompensation = window.innerWidth - document.body.offsetWidth;
   const lockScroll = useCallback(() => {
     document.body.style.overflow = "hidden";
@@ -12,3 +12,5 @@ export const useScrollLock = () => {
   }, []);
   return {lockScroll, unlockScroll};
 };
+
+export default useScrollLock;

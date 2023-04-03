@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useCallback, useContext } from "react";
 
 import AppContext from "@/Context";
 import {
@@ -10,13 +10,13 @@ import {
 
 import axios from "axios";
 
-export const useCardActions = () => {
+const useCardActions = () => {
   const {
     state: { cartProducts, favouriteProducts },
     dispach,
   } = useContext(AppContext);
 
-  const handleCartItem = async (obj) => {
+  const handleCartItem = useCallback(async (obj) => {
     const { id } = obj;
     try {
       if (cartProducts.find((catrObj) => catrObj.id === id)) {
@@ -29,11 +29,10 @@ export const useCardActions = () => {
     } catch (error) {
       alert(error);
     }
-  };
+  });
 
-  const handleFavouriteItem = async (obj) => {
+  const handleFavouriteItem = useCallback(async (obj) => {
     const { id } = obj;
-    console.log(favouriteProducts.find((catrObj) => catrObj.id === id));
     try {
       if (favouriteProducts.find((catrObj) => catrObj.id === id)) {
         await axios.delete(`/favourite/${id}`);
@@ -45,7 +44,9 @@ export const useCardActions = () => {
     } catch (e) {
       alert(e);
     }
-  };
+  });
 
   return { handleCartItem, handleFavouriteItem };
 };
+
+export default useCardActions;

@@ -10,6 +10,10 @@ const ProductsList = ({ requiredItems }) => {
     state: { cartProducts, favouriteProducts, searchValue, isLoading },
   } = useContext(AppContext);
 
+  const findMarks = (arr, id) => {
+    return arr.some((obj) => obj.id === id);
+  }
+
   return (
     <ul>
       {isLoading
@@ -30,14 +34,11 @@ const ProductsList = ({ requiredItems }) => {
                 <ProductCard
                   key={item.id}
                   product={item}
-                  added={cartProducts.some((cartObj) => cartObj.id === item.id)}
-                  favourited={favouriteProducts.some(
-                    (favObj) => favObj.id === item.id
-                  )}
+                  added={findMarks(cartProducts, item.id)}
+                  favourited={findMarks(favouriteProducts, item.id)}
                 />
               );
             })}
-      {/* {} */}
     </ul>
   );
 };

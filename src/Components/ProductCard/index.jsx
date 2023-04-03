@@ -1,5 +1,5 @@
 import React from "react";
-import { useCardActions } from "@/hooks/useCardActions";
+import { useCardActions } from "@/hooks";
 
 import { Card } from "./style";
 

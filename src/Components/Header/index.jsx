@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useScrollLock } from "@/hooks/useScrollLock";
+import { useScrollLock } from "@/hooks";
 
 import AppContext from "@/Context";
 import { handleCart } from "@/actions";

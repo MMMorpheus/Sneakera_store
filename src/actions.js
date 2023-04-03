@@ -7,8 +7,10 @@ import {
   ITEAMS_LOADED,
   ADD_TO_CART,
   REMOVE_FROM_CART,
+  CLEAR_CART,
   ADD_TO_FAVOURITES,
-  REMOVE_FROM_FAVOURITES
+  REMOVE_FROM_FAVOURITES,
+  MAKE_AN_ORDER
 } from "@/boilerplate";
 
 export const getAllProducts = (payload) => {
@@ -65,6 +67,12 @@ export const removeFromCart = (payload) => {
     payload,
   };
 };
+export const clearCart = (payload) => {
+  return {
+    type: CLEAR_CART,
+    payload
+  };
+};
 export const addToFavourites = (payload) => {
   return {
     type: ADD_TO_FAVOURITES,
@@ -74,6 +82,12 @@ export const addToFavourites = (payload) => {
 export const removeFromFavourites = (payload) => {
   return {
     type: REMOVE_FROM_FAVOURITES,
+    payload,
+  };
+};
+export const makeAnOrder = (payload) => {
+  return {
+    type: MAKE_AN_ORDER,
     payload,
   };
 };

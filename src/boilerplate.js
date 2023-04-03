@@ -13,6 +13,9 @@ export const ITEAMS_LOADED = "Items loaded";
 // Products actions
 export const ADD_TO_CART = "Add to cart"
 export const REMOVE_FROM_CART = "Remove from cart"
+export const CLEAR_CART = "Clear cart"
 
 export const ADD_TO_FAVOURITES = "Add to favourites"
 export const REMOVE_FROM_FAVOURITES = "Remove from favourites"
+
+export const MAKE_AN_ORDER = "Make an order"
